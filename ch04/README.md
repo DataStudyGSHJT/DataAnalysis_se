@@ -82,7 +82,7 @@
 * 구간 조정하기
   - y축 구간 조정
     - 로그 스케일(log scale) `plt.yscale('log')
-     : 한 구간의 도수가 너무 커서 다른 구간의 도수가 표시되지 않는 경우 **y축**을 로그 스케일로 바꿔 해결
+     : 한 구간의 도수가 너무 커서 다른 구간의 도수가 표시되지 않는 경우 **y축**을 로그 스케일로 바꿔 해결  
       -> **로그 스케일로 변환된 그래프를 볼 때 실제 데이터는 훨씬 더 격차가 크다는 점을 기억할 것**
   - x축 구간 조정
     - bins 매개변수
@@ -92,8 +92,8 @@
  : 최솟값, 제 1/2/3 사분위수, 최댓값을 사용해 데이터를 요약한 그래프
   - boxplot() 함수: `plt.boxplot(df[[col1, col2, ...]])`
 * 상자 수염 그림 수평으로 그리기
-  - vert 매개변수: `plt.boxplot(df[[col1, col2, ...]], vert=False)`
+  - vert 매개변수: `plt.boxplot(df[[col1, col2, ...]], vert=False)`  
     ㄴ 기본값은 True(수직) -> False(수평)로 변경 가능
 * 수염 길이 조정하기
-  - whis 매개변수: `plt.boxplot(df[[col1, col2, ...]], whis=n)`
+  - whis 매개변수: `plt.boxplot(df[[col1, col2, ...]], whis=n)`  
     ㄴ 기본값은 1.5배 -> n배로 변경 가능
