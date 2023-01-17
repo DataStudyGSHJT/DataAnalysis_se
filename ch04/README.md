@@ -39,14 +39,14 @@
  - max() 메서드 `df[col_name].max()`
 ### 분위수 구하기
 * 분위수(quantile)  
- : 데이터를 순서대로 늘어 놓았을 떄 이를 균등한 가격으로 나누는 기준점
+ : 데이터를 순서대로 늘어 놓았을 떄 이를 균등한 가격으로 나누는 기준점  
   -> 사분위수: 25%(제 1사분위수), 50%(제 2사분위수, 중앙값), 75%(제 3사분위수)
-  - quantile() 메서드 `df[col_name].quantile(0.a)` or `df[col_name].quantile([0.a, 0.b, 0.c])`
+  - quantile() 메서드 `df[col_name].quantile(0.a)` or `df[col_name].quantile([0.a, 0.b, 0.c])`  
   -> interpolation(보간) : 두 지점 사이에 놓인 특정 위치 값을 구하는 방법
-  - `df[col_name].quantile(0.a, interpolation='linear/midpoint/nearest/higher/lower')`
-   ㄴ linear: 두 수의 분위수에 비례한 값 사용
-   ㄴ midpoint: 분위수 상관 없이 두 수 사이의 중앙 값 사용
-   ㄴ nearest: 두 수 중에 가까운 값 사용
+  - `df[col_name].quantile(0.a, interpolation='linear/midpoint/nearest/higher/lower')`  
+   ㄴ linear: 두 수의 분위수에 비례한 값 사용  
+   ㄴ midpoint: 분위수 상관 없이 두 수 사이의 중앙 값 사용  
+   ㄴ nearest: 두 수 중에 가까운 값 사용  
    ㄴ lower/higher: 두 수 중에 더 작은/큰 값 사용
 * 백분위 구하기  
  : boolean 배열을 사용한 뒤 mean()을 호출하여 평균을 구하면 비율 계산 가능
