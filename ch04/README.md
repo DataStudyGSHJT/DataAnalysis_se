@@ -40,10 +40,10 @@
 ### 분위수 구하기
 * 분위수(quantile)  
  : 데이터를 순서대로 늘어 놓았을 떄 이를 균등한 가격으로 나누는 기준점
- -> 사분위수: 25%(제 1사분위수), 50%(제 2사분위수, 중앙값), 75%(제 3사분위수)
- - quantile() 메서드 `df[col_name].quantile(0.a)` or `df[col_name].quantile([0.a, 0.b, 0.c])`
- -> interpolation(보간) : 두 지점 사이에 놓인 특정 위치 값을 구하는 방법
- - `df[col_name].quantile(0.a, interpolation='linear/midpoint/nearest/higher/lower')`
+  -> 사분위수: 25%(제 1사분위수), 50%(제 2사분위수, 중앙값), 75%(제 3사분위수)
+  - quantile() 메서드 `df[col_name].quantile(0.a)` or `df[col_name].quantile([0.a, 0.b, 0.c])`
+  -> interpolation(보간) : 두 지점 사이에 놓인 특정 위치 값을 구하는 방법
+  - `df[col_name].quantile(0.a, interpolation='linear/midpoint/nearest/higher/lower')`
    ㄴ linear: 두 수의 분위수에 비례한 값 사용
    ㄴ midpoint: 분위수 상관 없이 두 수 사이의 중앙 값 사용
    ㄴ nearest: 두 수 중에 가까운 값 사용
@@ -53,11 +53,11 @@
 ### 분산 구하기
 * 분산(variance)  
  : 평균으로부터 데이터가 얼마나 퍼져있는지를 나타내는 통계량
- - var() 메서드: `df[col_name].var()`
+  - var() 메서드: `df[col_name].var()`
  ### 표준편차 구하기
  * 표준편차(standard deviation)  
   : 분산의 제곱근, **평균을 중심으로 데이터가 대략 얼만큼 떨어져 분포해 있는지 표현하는 값**
-  - std() 메서드: `df[col_name].std()`
+   - std() 메서드: `df[col_name].std()`
  ### 최빈값 구하기
  * 최빈값(mode)  
   : 데이터에서 가장 많이 등장하는 값
@@ -75,7 +75,25 @@
   - 양의 상관관계: x축이 증가함에 따라 y축이 증가함
   - 음의 상관관계: x축이 증가함에 따라 y축이 감소함
 ### 히스토그램 그리기
-* 히스토그램  
+* 히스토그램  **하나의 특성에 대한 분포 확인용**
  : 수치형 특성의 값을 일정 구간(bin)으로 나누어 구간 안에 포함된 데이터 개수(도수)를 막대 그래프로 그린 것
- - hist() 함수: `plt.hist([1차원_데이터], bins=n)`
- - histogram_bin_edges() 함수: `np.histogram_bin_edges([1차원 데이터], bins=n)`
+  - hist() 함수: `plt.hist([1차원_데이터], bins=n)`
+  - histogram_bin_edges() 함수: `np.histogram_bin_edges([1차원 데이터], bins=n)`
+* 구간 조정하기
+  - y축 구간 조정
+    - 로그 스케일(log scale) `plt.yscale('log')
+     : 한 구간의 도수가 너무 커서 다른 구간의 도수가 표시되지 않는 경우 **y축**을 로그 스케일로 바꿔 해결
+      -> **로그 스케일로 변환된 그래프를 볼 때 실제 데이터는 훨씬 더 격차가 크다는 점을 기억할 것**
+  - x축 구간 조정
+    - bins 매개변수
+    - `plt.xscale('log')`
+### 상자 수염 그림 그리기
+* 상자 수염 그림 **여러 특성에 대한 분포 확인용**
+ : 최솟값, 제 1/2/3 사분위수, 최댓값을 사용해 데이터를 요약한 그래프
+  - boxplot() 함수: `plt.boxplot(df[[col1, col2, ...]])`
+* 상자 수염 그림 수평으로 그리기
+  - vert 매개변수: `plt.boxplot(df[[col1, col2, ...]], vert=False)`
+    ㄴ 기본값은 True(수직) -> False(수평)로 변경 가능
+* 수염 길이 조정하기
+  - whis 매개변수: `plt.boxplot(df[[col1, col2, ...]], whis=n)`
+    ㄴ 기본값은 1.5배 -> n배로 변경 가능
