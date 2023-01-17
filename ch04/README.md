@@ -40,6 +40,42 @@
 ### 분위수 구하기
 * 분위수(quantile)  
  : 데이터를 순서대로 늘어 놓았을 떄 이를 균등한 가격으로 나누는 기준점
- - 사분위수: 25%(제 1사분위수), 50%(제 2사분위수, 중앙값), 75%(제 3사분위수)
-* quantile() 메서드
+ -> 사분위수: 25%(제 1사분위수), 50%(제 2사분위수, 중앙값), 75%(제 3사분위수)
+ - quantile() 메서드 `df[col_name].quantile(0.a)` or `df[col_name].quantile([0.a, 0.b, 0.c])`
+ -> interpolation(보간) : 두 지점 사이에 놓인 특정 위치 값을 구하는 방법
+ - `df[col_name].quantile(0.a, interpolation='linear/midpoint/nearest/higher/lower')`
+   ㄴ linear: 두 수의 분위수에 비례한 값 사용
+   ㄴ midpoint: 분위수 상관 없이 두 수 사이의 중앙 값 사용
+   ㄴ nearest: 두 수 중에 가까운 값 사용
+   ㄴ lower/higher: 두 수 중에 더 작은/큰 값 사용
+* 백분위 구하기  
+ : boolean 배열을 사용한 뒤 mean()을 호출하여 평균을 구하면 비율 계산 가능
+### 분산 구하기
+* 분산(variance)  
+ : 평균으로부터 데이터가 얼마나 퍼져있는지를 나타내는 통계량
+ - var() 메서드: `df[col_name].var()`
+ ### 표준편차 구하기
+ * 표준편차(standard deviation)  
+  : 분산의 제곱근, **평균을 중심으로 데이터가 대략 얼만큼 떨어져 분포해 있는지 표현하는 값**
+  - std() 메서드: `df[col_name].std()`
+ ### 최빈값 구하기
+ * 최빈값(mode)  
+  : 데이터에서 가장 많이 등장하는 값
+  - mode() 메서드: `df[col_name].mode()`
   
+## 04-2. 분포 요약하기
+**matplotlib 패키지 사용** `import matplotlib.pyplot as plt`
+### 산점도 그리기
+* 산점도  
+ : 두 변수 혹은 두 가지 특성값을 직교 좌표계에 점으로 나타내는 그래프
+ - scatter() 함수: `plt.scatter([x축_좌표], [y축_좌표])`
+* 투명도 조절하기
+  - `plt.scatter([x축_좌표], [y축_좌표], alpha=0 ~ 1)`
+    : 0에 가까울수록 투명하고 1에 가까울수록 불투명
+  - 양의 상관관계: x축이 증가함에 따라 y축이 증가함
+  - 음의 상관관계: x축이 증가함에 따라 y축이 감소함
+### 히스토그램 그리기
+* 히스토그램  
+ : 수치형 특성의 값을 일정 구간(bin)으로 나누어 구간 안에 포함된 데이터 개수(도수)를 막대 그래프로 그린 것
+ - hist() 함수: `plt.hist([1차원_데이터], bins=n)`
+ - histogram_bin_edges() 함수: `np.histogram_bin_edges([1차원 데이터], bins=n)`
